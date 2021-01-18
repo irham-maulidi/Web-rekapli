@@ -1,0 +1,137 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+
+<!doctype html>
+<html lang="id">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="shortcut icon" href="<?=site_url('assets/img/logo.png')?>">
+        <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1">
+        <title><?=$title?></title>
+        <?=link_tag('assets/css/bootstrap.css?ver=3.3.7')?>
+        <?=link_tag('assets/css/style.css?ver=1.0.0')?>
+    </head>
+    <body onload="window.print()">
+        <div class="container isi">
+            <div class="row print">
+                <div class="col-sm-3" id="foto">
+                    <?php if (!empty($school['s_foto'])) { ?>
+                        <img class="foto" src="<?=site_url('uploads/foto/'.$school['s_foto'])?>" alt="Foto">
+                    <?php } else { ?>
+                        <img class="foto" src="<?=site_url('assets/img/avatar.png')?>" alt="Foto">
+                    <?php } ?>
+                </div>
+                <div class="col-sm-9" id="data">
+                    <table class="table sekolah">
+                        <tbody>
+                           <tr>
+                    <td width="150px">NPSN</td>
+                    <td width="5px">:</td>
+                    <td><?=$school['s_npsn']?></td>
+                </tr>
+                <tr>
+                    <td width="150px">Nama</td>
+                    <td width="5px">:</td>
+                    <td><?=$school['s_name']?></td>
+                </tr>
+                <tr>
+                    <td width="150px">Sk Izin Operasional</td>
+                    <td width="5px">:</td>
+                    <td><?=$school['s_dob']?></td>
+                </tr>
+                <tr>
+                    <td width="150px">Status Sekolah</td>
+                    <td width="5px">:</td>
+                    <td><?=$school['s_statussekolah']?></td>
+                </tr>
+                <tr>
+                    <td width="150px">Instansi</td>
+                    <td width="5px">:</td>
+                    <td><?=$school['s_instansi']?></td>
+                </tr>
+                <tr>
+                    <td width="150px">Kecamatan</td>
+                    <td width="5px">:</td>
+                    <td><?=$school['m_name']?></td>
+                </tr>
+
+               <!--  <?php if ($school['s_is_active'] == "Aktif") { ?>
+                    <tr>
+                        <td width="150px">Tahun Masuk</td>
+                        <td width="5px">:</td>
+                        <td><?=$school['s_yi']?></td>
+                    </tr>
+                    <tr>
+                        <td width="150px">Tahun Keluar</td>
+                        <td width="5px">:</td>
+                        <td>&minus;</td>
+                    </tr>
+                <?php } else { ?>
+                    <tr>
+                        <td width="150px">Tahun Masuk</td>
+                        <td width="5px">:</td>
+                        <td><?=$school['s_yi']?></td>
+                    </tr>
+                    <tr>
+                        <td width="150px">Tahun Keluar</td>
+                        <td width="5px">:</td>
+                        <td><?=$school['s_yo']?></td>
+                    </tr>
+                <?php } ?> -->
+
+                            <tr>
+                                <td width="150px">Status Sekolah</td>
+                                <td width="5px">:</td>
+                                <td><?=$school['s_is_active']?></td>
+                            </tr>
+                            <tr>
+                                <td width="150px">Kelengkapan Data</td>
+                                <td width="5px">:</td>
+                                <td>
+                                    <?php if ($school['s_status'] == "Lengkap") { ?>
+                                        Lengkap
+                                    <?php } else if ($school['s_status'] == "Kurang") { ?>
+                                        <span class="pku kurang">Kurang</span>
+                                    <?php } else { ?>
+                                        <span class="pbe belum">Belum Ada Data</span>
+                                    <?php } ?>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tc">
+                <h3><?=$attachment?></h3>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th width="14.285%">Surat Pengantar</th>
+                            <th width="14.285%">Surat Pernyataan</th>
+                            <th width="14.285%">Usulan Rekap</th>
+                            <th width="14.285%">Profil Sekolah</th>
+                            <th width="14.285%">Peserta Didik</th>
+                            <th width="14.285%">Rombongan Belajar</th>
+                            <th width="14.285%">Sarana & Prasarana</th>
+                            <th width="14.285%">Daftar Pendidik</th>
+                            <th width="14.285%">Jadwal Pembelajaran</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><?=(!empty($school['s_sp'])) ? '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>' : "&minus;";?></td>
+                            <td><?=(!empty($school['s_spn'])) ? '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>' : "&minus;";?></td>
+                            <td><?=(!empty($school['s_li'])) ? '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>' : "&minus;";?></td>
+                            <td><?=(!empty($school['s_ps'])) ? '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>' : "&minus;";?></td>
+                            <td><?=(!empty($school['s_pd'])) ? '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>' : "&minus;";?></td>
+                            <td><?=(!empty($school['s_rb'])) ? '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>' : "&minus;";?></td>
+                            <td><?=(!empty($school['s_spr'])) ? '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>' : "&minus;";?></td>
+                            <td><?=(!empty($school['s_dp'])) ? '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>' : "&minus;";?></td>
+                            <td><?=(!empty($school['s_jp'])) ? '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>' : "&minus;";?></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
